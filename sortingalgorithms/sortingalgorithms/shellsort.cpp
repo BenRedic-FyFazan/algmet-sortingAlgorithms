@@ -29,10 +29,7 @@
  then we divide the gap by 3 and redo it (since gap is now effectively 1
  it's just insertion sort).
  */
-void shellsort(const int arrSize) {
-    // Creating array for example
-    std::vector<char> arr(arrSize+1);
-    populateCharArray(arr, arrSize+1);
+void shellsort(std::vector<char>& arr) {
     int arrLen = int(arr.size());  // Array length
     
     /*
@@ -45,26 +42,42 @@ void shellsort(const int arrSize) {
         gap = (3 * gap) + 1;
     }
     
+    // Display array before sorting:
+    std::cout << "Reminder: the first element in the printed arrays is position 1!" << std::endl;
+    std::cout << "Array before start: ";
+    printArray(arr);
+    std::cout << std::endl;
+    
     // h-sorting
     while (gap > 0)  {
         for (int i = gap + 1;  i < arrLen;  i++) {
+            std::cout << "For loop iterator = " << i << ", gapsize = " << gap << std::endl;
             
             char tmp = arr[i];
             int j  = i;
             
             while (j > gap  &&  arr[j-gap] > tmp) {
+                std::cout << "    Setting value of arrayPos[" << j << "] to value of arrayPos[" << j-gap << "]." << std::endl;
                 arr[j] = arr[j-gap];
                 j -= gap;
             }
-            std::cout << "I = " << i << ": Swapping '" << arr[j] << "' with '" << tmp << std::endl;
+            std::cout << "    Setting value of arrayPos[" << j << "] to value '" << tmp << "'." << std::endl << std::endl;
+            std::cout << "    After current for-loop step: ";
+            printArray(arr);
+            std::cout << std::endl;
             arr[j] = tmp;
         }
-        std::cout << std::endl << "Reducing gapsize!"  << std::endl;
+        std::cout << std::endl << "Reducing gapsize!"  << std::endl << std::endl;
         gap /= 3;
     }
     
     // Writes the result to console:
-    std::cout << "Array after sorting: " << std::endl << "[" ;
+    std::cout << "Array after sorting: " << std::endl;
+    printArray(arr);
+}
+
+void printArray(const std::vector<char>& arr) {
+    std::cout << "[";
     for (int i = 1; i < arr.size(); i++) {
         std::cout << arr[i];
         if (i < arr.size()-1) std::cout << ", ";

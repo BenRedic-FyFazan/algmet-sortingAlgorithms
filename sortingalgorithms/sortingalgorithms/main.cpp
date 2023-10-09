@@ -16,6 +16,27 @@
 const int N = 20;
 
 int main(int argc, const char * argv[]) {
+    
+    // Creating array for example
+    std::vector<char> arr(N+1);
+    populateCharArray(arr, N+1);
+    
+    /*
+    arr.push_back(' ');
+    arr.push_back('D');
+    arr.push_back('I');
+    arr.push_back('S');
+    arr.push_back('T');
+    arr.push_back('R');
+    arr.push_back('I');
+    arr.push_back('B');
+    arr.push_back('U');
+    arr.push_back('S');
+    arr.push_back('J');
+    arr.push_back('O');
+    arr.push_back('N');
+     */
+    
     char choice;
     
     while (true) {
@@ -36,7 +57,7 @@ int main(int argc, const char * argv[]) {
                 
             case '2':
                 std::cout << "Starting Shellsort example." << std::endl;
-                shellsort(N);
+                shellsort(arr);
             
             case '0': // Waterfalls into case 'q'
             case 'q':
