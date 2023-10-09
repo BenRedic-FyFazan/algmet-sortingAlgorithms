@@ -1,3 +1,5 @@
 #pragma once
 #include <vector>
-void shellSort(std::vector<char>& arr);
+void shellsort(const int arrSize);
+void displaySortingStep(const std::vector<char>& arr);
+void populateCharArray(std::vector<char>& arr, const int arrSize);
