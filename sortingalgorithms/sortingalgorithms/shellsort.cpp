@@ -61,11 +61,11 @@ void shellsort(std::vector<char>& arr) {
                 arr[j] = arr[j-gap];
                 j -= gap;
             }
+            arr[j] = tmp;
             std::cout << "    Setting value of arrayPos[" << j << "] to value '" << tmp << "'." << std::endl << std::endl;
             std::cout << "    After current for-loop step: ";
             printArray(arr);
             std::cout << std::endl;
-            arr[j] = tmp;
         }
         std::cout << std::endl << "Reducing gapsize!"  << std::endl << std::endl;
         gap /= 3;
